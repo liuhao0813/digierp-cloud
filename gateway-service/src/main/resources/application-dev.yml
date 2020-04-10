@@ -1,0 +1,30 @@
+server:
+  port: 7000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-route
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+        - id: security-route
+          uri: lb://security-service
+          predicates:
+            - Path=/security/**
+          filters:
+            - StripPrefix=1
+        - id: community-route
+          uri: lb://community-service
+          predicates:
+            - Path=/community/**
+          filters:
+            - StripPrefix=1
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8000/public/key.json

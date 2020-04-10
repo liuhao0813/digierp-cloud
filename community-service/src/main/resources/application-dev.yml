@@ -1,0 +1,14 @@
+server:
+  port: 8020
+
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-uri: http://localhost:8000/oauth/token_key
+    client:
+      client-id: admin
+      client-secret: 123456
+      accessTokenUri: http://localhost:8000/oauth/token
+      grant-type: client_credentials
+      scope: default
