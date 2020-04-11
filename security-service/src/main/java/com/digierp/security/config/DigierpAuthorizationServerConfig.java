@@ -1,4 +1,4 @@
-package com.digierp.auth.config;
+package com.digierp.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

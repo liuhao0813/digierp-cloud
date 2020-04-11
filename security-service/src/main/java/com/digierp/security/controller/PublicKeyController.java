@@ -1,4 +1,4 @@
-package com.digierp.auth.controller;
+package com.digierp.security.controller;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;

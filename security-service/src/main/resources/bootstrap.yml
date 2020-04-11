@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: security-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        namespace: ${spring.profiles.active}
+        group: DIGIERP_GROUP
+        file-extension: yaml
+

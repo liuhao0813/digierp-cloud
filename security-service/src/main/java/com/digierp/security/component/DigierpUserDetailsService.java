@@ -1,4 +1,4 @@
-package com.digierp.auth.component;
+package com.digierp.security.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
