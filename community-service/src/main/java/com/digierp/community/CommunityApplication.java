@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * @date 2020/4/10
  */
 @EnableResourceServer
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.digierp")
 @EnableFeignClients
 public class CommunityApplication {
 

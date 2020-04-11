@@ -53,7 +53,7 @@ public class DigierpAuthorizationServerConfig extends AuthorizationServerConfigu
                 .scopes("default")
                 .refreshTokenValiditySeconds(2950000)
                 .accessTokenValiditySeconds(7200)
-                .authorizedGrantTypes("password", "refresh_token", "authorization_code", "client_credentials");
+                .authorizedGrantTypes("password", "refresh_token", "authorization_code");
     }
 
     @Override
@@ -71,7 +71,8 @@ public class DigierpAuthorizationServerConfig extends AuthorizationServerConfigu
 
     @Bean
     public KeyPair keyPair() {
-        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("3097782_digierp.com.pfx"), "40g3zF3v".toCharArray());
-        return keyStoreKeyFactory.getKeyPair("alias", "*****".toCharArray());
+        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(
+                new ClassPathResource("oauth2-jwt.jks"), "oauth2".toCharArray());
+        return keyStoreKeyFactory.getKeyPair("oauth2-jwt", "oauth2".toCharArray());
     }
 }
