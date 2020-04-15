@@ -20,7 +20,7 @@ public class GateWayWebSecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
-                .pathMatchers("/security/**").permitAll()
+                .pathMatchers("/auth/**").permitAll()
                 .anyExchange().access(permissionAuthorizationManager);
 
         http.oauth2ResourceServer().jwt();

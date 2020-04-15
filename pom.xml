@@ -13,6 +13,7 @@
         <module>security-service</module>
         <module>common-service</module>
         <module>community-service</module>
+        <module>authentication-service</module>
     </modules>
     <packaging>pom</packaging>
 

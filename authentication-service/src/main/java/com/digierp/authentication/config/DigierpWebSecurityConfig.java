@@ -1,4 +1,4 @@
-package com.digierp.security.config;
+package com.digierp.authentication.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,9 +25,10 @@ public class DigierpWebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -44,9 +45,18 @@ public class DigierpWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/public/key.json").permitAll()
+        http.formLogin().loginPage("/login/page")
+                .loginProcessingUrl("/authentication/form")
+            .and()
+                .authorizeRequests()
+                .antMatchers("/public/key.json",
+                        "/login/page",
+                        "/authentication/form",
+                        "/layui/**"
+                ).permitAll()
                 .anyRequest().authenticated();
+
     }
+
 
 }
