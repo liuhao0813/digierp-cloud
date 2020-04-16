@@ -1,5 +1,6 @@
 package com.digierp.authentication.component;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -13,12 +14,11 @@ import org.springframework.stereotype.Component;
  * @author liuhao
  * @date 2020/4/10
  */
+@RequiredArgsConstructor
 @Component
 public class DigierpUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

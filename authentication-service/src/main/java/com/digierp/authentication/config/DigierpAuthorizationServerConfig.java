@@ -1,5 +1,6 @@
 package com.digierp.authentication.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,14 +24,13 @@ import java.security.KeyPair;
  * @date 2020/4/10
  */
 @Configuration
+@RequiredArgsConstructor
 @EnableAuthorizationServer
 public class DigierpAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
     @Bean
     public TokenStore tokenStore() {

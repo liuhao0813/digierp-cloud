@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.digierp</groupId>
-    <artifactId>digierp</artifactId>
+    <artifactId>digierp-cloud</artifactId>
     <version>1.0.0</version>
 
     <modules>
@@ -14,8 +14,20 @@
         <module>common-service</module>
         <module>community-service</module>
         <module>authentication-service</module>
+
     </modules>
+
     <packaging>pom</packaging>
+
+    <properties>
+        <spring.boot.version>2.2.6.RELEASE</spring.boot.version>
+        <spring.cloud.version>Hoxton.SR3</spring.cloud.version>
+        <spring.cloud.alibaba.version>2.2.0.RELEASE</spring.cloud.alibaba.version>
+        <swagger.fox.version>2.9.2</swagger.fox.version>
+        <swagger.bootstrap-ui.version>1.9.4</swagger.bootstrap-ui.version>
+        <swagger.core.version>1.5.22</swagger.core.version>
+    </properties>
+
 
     <dependencyManagement>
 
@@ -23,23 +35,43 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.2.6.RELEASE</version>
+                <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR3</version>
+                <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.2.0.RELEASE</version>
+                <version>${spring.cloud.alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.fox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger.bootstrap-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -55,8 +87,17 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -97,5 +138,31 @@
             </plugin>
         </plugins>
     </build>
+
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

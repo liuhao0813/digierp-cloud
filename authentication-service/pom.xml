@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>digierp</artifactId>
+        <artifactId>digierp-cloud</artifactId>
         <groupId>com.digierp</groupId>
         <version>1.0.0</version>
     </parent>
@@ -15,12 +15,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <groupId>com.digierp.common</groupId>
+            <artifactId>common-service</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>

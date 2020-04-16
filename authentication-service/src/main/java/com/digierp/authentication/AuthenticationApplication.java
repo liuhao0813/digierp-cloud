@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author liuhao
  * @date 2020/4/14
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.digierp.authentication", "com.digierp.common"})
 public class AuthenticationApplication {
 
     public static void main(String[] args) {

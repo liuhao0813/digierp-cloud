@@ -1,5 +1,6 @@
 package com.digierp.authentication.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,22 +19,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class DigierpWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final UserDetailsService userDetailsService;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    private final PasswordEncoder passwordEncoder;
 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
+                .passwordEncoder(passwordEncoder);
     }
 
     @Bean
@@ -45,14 +42,15 @@ public class DigierpWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/login/page")
+        http.formLogin().loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")
             .and()
                 .authorizeRequests()
                 .antMatchers("/public/key.json",
-                        "/login/page",
+                        "/authentication/require",
                         "/authentication/form",
-                        "/layui/**"
+                        "/layui/**",
+                        "/login/page"
                 ).permitAll()
                 .anyRequest().authenticated();
 
